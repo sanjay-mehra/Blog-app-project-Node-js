@@ -9,14 +9,15 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var sanitizer = require("express-sanitizer");
 var flash = require("connect-flash");
 
-var dbURL = process.env.DATABASEURL || 'mongodb+srv://sanjay:12345@cluster0.6nq4x.mongodb.net/<dbname>?retryWrites=true&w=majority';
-mongoose.connect(dbURL, {useNewUrlParser: true});
+var {dbURL} = require ("./config/keys")
+
+//var dbURL = process.env.DATABASEURL || 'mongodb+srv://sanjay:12345@cluster0.6nq4x.mongodb.net/<dbname>?retryWrites=true&w=majority';
+mongoose.connect(dbURL, {useNewUrlParser: true,useUnifiedTopology: true});
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(flash());
 app.use(sanitizer());
-
 var blogSchema = new mongoose.Schema({
 	title: String,
 	image: String,
