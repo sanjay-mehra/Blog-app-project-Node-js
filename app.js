@@ -198,7 +198,5 @@ function blogOwnership(req,res,next) {
 	}
 }
 
-app.listen(4000, process.env.IP);
 
-var port = 4000
-console.log(`running on port: ${port}`)
+app.listen(process.env.PORT || 5000);
