@@ -61,7 +61,7 @@ app.get("/register",function(req,res){
 	res.render("register");
 });
 
-app.post("/register",function(req,res){
+app.post("/register",checkexisting,function(req,res){
 	var newUser = new User({username: req.body.username});
 	User.register(newUser,req.body.password,function(err,user){
 		if(err){
@@ -196,6 +196,31 @@ function blogOwnership(req,res,next) {
 		req.flash("error","Login to continue!!");
 		res.redirect("/login");
 	}
+}
+
+function checkexisting(req,res,next){
+	User.find({username:req.body.username})
+	.then(data=>{
+		if(data.length>0){
+			console.log("user already exists")
+			req.flash("error","Username not available")
+			res.redirect('/register')
+		}
+		else
+		{
+			console.log("user doesn't exists")
+			next()
+		}
+			
+	})
+	.catch(
+		err=>{
+			console.log(err)
+			req.flash("error",err)
+			res.redirect('/register')
+		}
+	)
+	
 }
 
 

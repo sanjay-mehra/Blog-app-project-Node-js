@@ -48,14 +48,16 @@
 
 	<div class="container">
 		<% if(success && success.length>0) { %>
-			<div class="alert alert-success mt-3">
+			<div class="alert alert-success mt-3" onclick="hide(this)">
 				<%= success %>
+				<i class="float-right fas fa-window-close" style="font-size: 25px;" ></i>
 			</div>
 		<% } %>
 		
 		<% if(error && error.length>0) { %>
-			<div class="alert alert-danger mt-3">
+			<div class="alert alert-danger mt-3" onclick="hide(this)">
 				<%= error %>
+				<i class="float-right fas fa-window-close" style="font-size: 25px;" ></i>
 			</div>
 		<% } %>
 	</div>
