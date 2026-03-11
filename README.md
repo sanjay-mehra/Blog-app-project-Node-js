@@ -1,6 +1,6 @@
 # Collapsible Mehra Family Chart Project
 
-### Basic Directory Structure
+Note: Click on name to expand and collapse
 
 <details open>
     <summary><b>Sobhan Singh</b></summary>
