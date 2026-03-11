@@ -287,6 +287,3 @@
     </ul>
 </details>
 ---
-
-### How it works
-The `details` tag creates a widget that the user can open or close. The `summary` tag provides the label for the widget. Nesting these allows for a tree-like experience.
